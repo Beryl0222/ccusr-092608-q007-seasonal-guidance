@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "南方秋季健康规则签发台领域事件",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_type",
+    "aggregate_type",
+    "aggregate_id",
+    "occurred_at",
+    "version",
+    "payload"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "CONTEXT_RECORDED",
+        "RULE_PROPOSED",
+        "CLINICAL_REVIEWED",
+        "RELEASE_SIGNED",
+        "CORRECTION_RAISED"
+      ]
+    },
+    "aggregate_type": {
+      "type": "string",
+      "enum": [
+        "regional_context",
+        "guidance_rule",
+        "release_revision",
+        "correction_obligation"
+      ]
+    },
+    "aggregate_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "payload_required_by_event": {
+    "RULE_PROPOSED": [
+      "target_group",
+      "trigger_set"
+    ],
+    "RELEASE_SIGNED": [
+      "rule_version",
+      "effective_window"
+    ],
+    "CORRECTION_RAISED": [
+      "affected_releases",
+      "due_at"
+    ]
+  },
+  "additionalProperties": false
+}

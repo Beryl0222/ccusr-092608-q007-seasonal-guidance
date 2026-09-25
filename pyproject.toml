@@ -1,0 +1,5 @@
+[project]
+name = "seasonal-guidance"
+version = "0.1.0"
+description = "南方秋季健康规则签发台领域契约"
+requires-python = ">=3.11"
