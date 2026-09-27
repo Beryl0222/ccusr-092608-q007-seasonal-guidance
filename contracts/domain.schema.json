@@ -20,18 +20,31 @@
       "type": "string",
       "enum": [
         "CONTEXT_RECORDED",
+        "COMPONENT_VERSIONED",
         "RULE_PROPOSED",
         "CLINICAL_REVIEWED",
         "RELEASE_SIGNED",
-        "CORRECTION_RAISED"
+        "COUNTY_ADOPTION_FROZEN",
+        "RECEIPT_RECORDED",
+        "RECEIPTS_MERGED",
+        "PUSH_SUSPENDED",
+        "PUSH_RESUMED",
+        "MESSAGE_PREPARED",
+        "MESSAGE_DELIVERED",
+        "MESSAGE_REVOKED",
+        "CORRECTION_RAISED",
+        "CORRECTION_FULFILLED"
       ]
     },
     "aggregate_type": {
       "type": "string",
       "enum": [
         "regional_context",
+        "guidance_component",
         "guidance_rule",
         "release_revision",
+        "exposure_receipt",
+        "message_dispatch",
         "correction_obligation"
       ]
     },
@@ -52,17 +65,67 @@
     }
   },
   "payload_required_by_event": {
+    "COMPONENT_VERSIONED": [
+      "component_kind",
+      "component_version",
+      "classification"
+    ],
     "RULE_PROPOSED": [
       "target_group",
       "trigger_set"
+    ],
+    "CLINICAL_REVIEWED": [
+      "rule_version",
+      "decision"
     ],
     "RELEASE_SIGNED": [
       "rule_version",
       "effective_window"
     ],
+    "COUNTY_ADOPTION_FROZEN": [
+      "county_id",
+      "rule_version"
+    ],
+    "RECEIPT_RECORDED": [
+      "region_code",
+      "exposure_key",
+      "channel",
+      "facts_signature"
+    ],
+    "RECEIPTS_MERGED": [
+      "exposure_key",
+      "receipt_ids",
+      "outcome"
+    ],
+    "PUSH_SUSPENDED": [
+      "scope",
+      "reason"
+    ],
+    "PUSH_RESUMED": [
+      "scope"
+    ],
+    "MESSAGE_PREPARED": [
+      "county_id",
+      "region_code",
+      "target_group",
+      "rule_id",
+      "rule_version"
+    ],
+    "MESSAGE_DELIVERED": [
+      "message_id",
+      "delivered_at"
+    ],
+    "MESSAGE_REVOKED": [
+      "message_id",
+      "reason"
+    ],
     "CORRECTION_RAISED": [
       "affected_releases",
       "due_at"
+    ],
+    "CORRECTION_FULFILLED": [
+      "correction_id",
+      "fulfilled_at"
     ]
   },
   "additionalProperties": false

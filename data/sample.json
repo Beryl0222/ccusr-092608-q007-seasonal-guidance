@@ -2,8 +2,19 @@
   "event_id": "092601-007-sample-001",
   "event_type": "CONTEXT_RECORDED",
   "aggregate_type": "regional_context",
-  "aggregate_id": "seasonal_guidance-001",
+  "aggregate_id": "guangxi-nanning-2026-autumn",
   "occurred_at": "2026-09-25T10:00:00+08:00",
   "version": 1,
-  "payload": {}
+  "payload": {
+    "region_code": "450100",
+    "phase": "wet_then_dry",
+    "observed_at": "2026-09-25T10:00:00+08:00",
+    "facts": {
+      "temperature_c": 27.4,
+      "humidity_pct": 82,
+      "pollen_level": "moderate",
+      "mosquito_activity": "high",
+      "festival_gathering": true
+    }
+  }
 }
